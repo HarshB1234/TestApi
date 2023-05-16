@@ -22,7 +22,7 @@ const addProduct = async (req, res) => {
             res.status(201).json({"msg" : "Product inserted."});
         }  
     } catch (err) {
-        res.status(400).send(err);
+        res.status(400).json({"msg": "Bad request."});
     }
 }
 
@@ -36,7 +36,7 @@ const getProducts = async (req, res) => {
             res.status(404).json({"msg" : "Product does not exists."});
         }    
     } catch (err) {
-        res.status(500).send(err);
+        res.status(500).json(err);
     }
 }
 
@@ -50,7 +50,7 @@ const getProduct = async (req, res) => {
             res.status(404).json({"msg" : "Product does not exists."});
         }     
     } catch (err) {
-        res.status(500).send(err);
+        res.status(500).json(err);
     }
 }
 
@@ -60,7 +60,7 @@ const updateProduct = async (req, res) => {
         await Product.findOneAndUpdate({p_id}, req.body);
         res.status(201).json({"msg": "Product data updated."});
     } catch (err) {
-        res.status(500).send(err);
+        res.status(400).json({"msg": "Bad request."});;
     }
 }
 
@@ -70,7 +70,7 @@ const deleteProduct = async (req, res) => {
         await Product.findOneAndDelete({p_id}, req.body);
         res.status(201).json({"msg": "Product deleted."});
     } catch (err) {
-        res.status(500).send(err);
+        res.status(400).json({"msg": "Bad request."});
     }
 }
 
