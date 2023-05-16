@@ -18,7 +18,7 @@ const registerAdmin = async (req, res) => {
             })
     
             const token = await user.generateToken();
-            res.cookie("jwt", token, {expires: new Date(Date.now() + 500000)});
+            res.cookie("jwt", token, {expires: new Date(Date.now() + 86400*1000)});
     
             await user.save();
             res.status(201).json({"msg": "User created."});

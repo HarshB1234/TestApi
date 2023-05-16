@@ -14,7 +14,7 @@ const loginAdmin = async (req, res) => {
             if(isMatch){
                 const data2 = data[0];
                 const token = await data2.generateToken();
-                res.cookie("jwt", token, {expires: new Date(Date.now() + 500000)});
+                res.cookie("jwt", token, {expires: new Date(Date.now() + 86400*1000)});
     
                 res.status(201).json({"msg": "Admin Login successfully."});
             }else{
