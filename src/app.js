@@ -14,7 +14,7 @@ const app = express();
 
 app.use(express.json({limit:'16mb'}));
 
-app.get("/", (req, res) => res.send("Products Api"));
+app.get("/", (req, res) => res.send("Api"));
 
 app.use("/products", product_router);
 app.use("/register", register_router);

@@ -3,6 +3,6 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const logoutAdmin = require("../controllers/logout");
 
-router.route("/").post(auth, logoutAdmin);
+router.route("/").get(auth, logoutAdmin);
 
 module.exports = router
