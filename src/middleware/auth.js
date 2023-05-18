@@ -1,11 +1,13 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const Register = require("../models/register");
 
 const auth = async (req, res, next) => {
     try {
-        const token = req.cookies.jwt;
-        const verifyUser = jwt.verify(token, process.env.SECRET_KEY);
+        const token = req.cookies;
+        const token2 = token.jwt;
+        const verifyUser = jwt.verify(token2, process.env.SECRET_KEY);
         const user = await Register.findOne({_id:verifyUser._id});
         req.token = token;
         req.user = user;

@@ -12,7 +12,7 @@ const logout_router = require("./routes/logout");
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json({limit:'16mb'}));
 
 app.get("/", (req, res) => res.send("Products Api"));
 

@@ -56,19 +56,18 @@ const getProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     try {
-        const {name, p_id, image, price, description} = req.body;
-        await Product.findOneAndUpdate({p_id}, req.body);
-        res.status(201).json({"msg": "Product data updated."});
+        await Product.findOneAndUpdate({p_id: req.params.pid}, req.body);
+        res.status(204).json({"msg": "Product data updated."});
     } catch (err) {
-        res.status(400).json({"msg": "Bad request."});;
+        res.status(400).json({"msg": "Bad request."});
     }
 }
 
 const deleteProduct = async (req, res) => {
     try {
-        const {p_id} = req.body;
-        await Product.findOneAndDelete({p_id}, req.body);
-        res.status(201).json({"msg": "Product deleted."});
+        const p_id = req.params.pid;
+        await Product.findOneAndDelete({p_id});
+        res.status(204).json({"msg": "Product deleted."});
     } catch (err) {
         res.status(400).json({"msg": "Bad request."});
     }

@@ -6,7 +6,7 @@ const {addProduct, getProducts, getProduct, updateProduct, deleteProduct} = requ
 router.route("/").post(auth, addProduct);
 router.route("/").get(auth, getProducts);
 router.route("/:pid").get(auth, getProduct);
-router.route("/").put(auth, updateProduct);
-router.route("/").delete(auth, deleteProduct);
+router.route("/:pid").put(auth, updateProduct);
+router.route("/:pid").delete(auth, deleteProduct);
 
 module.exports = router;

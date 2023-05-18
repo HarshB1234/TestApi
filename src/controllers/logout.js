@@ -2,7 +2,7 @@ const express = require("express");
 
 const logoutAdmin = async (req, res) => {
     try {
-        req.user.token = "";
+        req.user.token = " ";
 
         res.clearCookie("jwt");
         await req.user.save();
