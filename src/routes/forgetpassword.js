@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const auth = require('../src/middleware/auth');
+const auth = require('../middleware/auth');
 const {emailid, otp, resetPass} = require("../controllers/forgetpassword")
 
 router.route("/").post(emailid);
