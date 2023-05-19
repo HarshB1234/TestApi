@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const validator = require("validator");
 
 const registerSchema = new mongoose.Schema({
     name: {
@@ -10,6 +11,10 @@ const registerSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
+        validate(value){
+            if(!validator.isEmail(value))
+            throw new Error("E-mail is not valid.")
+        }
     },
     pass: {
         type: String,
@@ -22,6 +27,10 @@ const registerSchema = new mongoose.Schema({
     token: {
         type: String,
         required: true,
+        default:""
+    },
+    otp: {
+        type: String,
         default:""
     },
 })

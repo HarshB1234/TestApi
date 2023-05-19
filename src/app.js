@@ -9,6 +9,7 @@ const product_router = require("./routes/product");
 const register_router = require("./routes/register");
 const login_router = require("./routes/login");
 const logout_router = require("./routes/logout");
+const forgetpass_router = require("./routes/forgetpassword");
 
 const app = express();
 
@@ -20,5 +21,6 @@ app.use("/products", product_router);
 app.use("/register", register_router);
 app.use("/login", login_router);
 app.use("/logout", logout_router);
+app.use("/forgetpassword", forgetpass_router);
 
 app.listen(port, () => console.log(`Listening at port ${port}`));
